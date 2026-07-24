@@ -1,31 +1,72 @@
-ANA680 Assignment: Breast Cancer Classification
-This repository contains eight classification models for the Wisconsin Breast Cancer dataset. Each required model is implemented in a separate Python file.
-Models
-Logistic Regression
-K-Nearest Neighbors (`k = 5`)
-Linear Support Vector Machine
-RBF Kernel Support Vector Machine
-Gaussian Naive Bayes
-Decision Tree
-Random Forest (`n_estimators = 10`)
-XGBoost
-Assignment Settings
-Test set: 25% of the cleaned dataset
-Training set: 75%
-Split seed: `random_state=42`
-Stratified split: Yes
-Original labels: `2 = benign`, `4 = malignant`
-Missing UCI values represented by `?` are removed during preprocessing.
-Common sample/patient ID columns are excluded from the predictors.
-Setup
-Replace the placeholder `Breast_Cancer_Data.csv` with the CSV supplied by the instructor.
-Open a terminal in this project folder.
-Create and activate a virtual environment if desired.
-Install the packages:
+# ANA680 – Assignment Week one
+## Breast Cancer Classification Using Machine Learning
+
+### Overview
+This project implements eight supervised machine learning classification algorithms using the Breast Cancer Wisconsin dataset from the UCI Machine Learning Repository.
+
+The objective is to compare the performance of several classification models using a 75% training and 25% testing split.
+
+Dataset:
+- Breast_Cancer_Data.csv
+- Approximately 683 patient records
+- 10 predictor features
+- Target Class:
+  - 2 = Benign
+  - 4 = Malignant
+
+---
+
+## Models Implemented
+
+1. Logistic Regression
+2. K-Nearest Neighbors (k = 5)
+3. Linear Support Vector Machine
+4. Kernel Support Vector Machine (RBF)
+5. Gaussian Naïve Bayes
+6. Decision Tree
+7. Random Forest (10 estimators)
+8. XGBoost
+
+---
+
+## Software Requirements
+
+Install the required packages:
+
 ```bash
-python -m pip install -r requirements.txt
+pip install pandas numpy scikit-learn xgboost
 ```
-Run Each Required File
+
+or
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Files Included
+
+```
+Breast_Cancer_Data.csv
+logistic_regression.py
+knn.py
+linear_svm.py
+kernel_svm.py
+naive_bayes.py
+decision_tree.py
+random_forest.py
+xgboost_model.py
+requirements.txt
+README.md
+```
+
+---
+
+## Running the Programs
+
+Run each classifier individually:
+
 ```bash
 python logistic_regression.py
 python knn.py
@@ -36,17 +77,29 @@ python decision_tree.py
 python random_forest.py
 python xgboost_model.py
 ```
-A convenience script is also provided:
-```bash
-python run_all_models.py
-```
-Record the printed accuracy and 2-by-2 confusion matrix in `ANA680_Assignment1_Results_Template.docx`.
-Confusion Matrix Layout
-For the scikit-learn models, labels are ordered as `[2, 4]`:
-```text
-[[True Benign,  Benign predicted as Malignant],
- [Malignant predicted as Benign, True Malignant]]
-```
-For XGBoost, the labels are converted to `0 = benign` and `1 = malignant`, but the matrix positions have the same interpretation.
-GitHub Submission
-Create a new GitHub repository and upload all project files. Do not forget to replace the placeholder dataset before running the models. Include the completed Word results document in the repository if permitted by the instructor.
+
+Each program prints:
+- Classification Accuracy
+- Confusion Matrix
+
+---
+
+## Assignment Requirements
+
+- Python
+- Scikit-learn
+- Separate Python file for each classifier
+- 75/25 train-test split
+- Accuracy reported
+- Confusion matrix reported
+- Results summarized in a Word document
+
+---
+
+## Author
+
+Alberto Mendez
+
+National University
+
+ANA680 – Machine Learning
