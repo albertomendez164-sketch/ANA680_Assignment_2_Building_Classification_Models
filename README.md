@@ -1,105 +1,80 @@
-# ANA680 – Assignment Week one
-## Breast Cancer Classification Using Machine Learning
+# ANA680 Assignment Week One: Breast Cancer Classification
 
-### Overview
-This project implements eight supervised machine learning classification algorithms using the Breast Cancer Wisconsin dataset from the UCI Machine Learning Repository.
+## Overview
+This repository contains the code and results for ANA680 Assignment 1. Eight classification models were trained and evaluated on the Wisconsin Breast Cancer (Original) dataset. Each required classifier is implemented in a separate Python file.
 
-The objective is to compare the performance of several classification models using a 75% training and 25% testing split.
+## Dataset
+The dataset was originally obtained from the UCI Machine Learning Repository and donated by Dr. William H. Wolberg of the University of Wisconsin Hospitals.
 
-Dataset:
-- Breast_Cancer_Data.csv
-- Approximately 683 patient records
-- 10 predictor features
-- Target Class:
-  - 2 = Benign
-  - 4 = Malignant
+- Original records: **699**
+- Records with complete data used for modeling: **683**
+- Predictor variables: **9**
+- Target labels: **2 = benign**, **4 = malignant**
+- Missing values: **16 rows containing `?` were removed**
+- The sample code number was excluded because it is an identifier rather than a predictive feature.
 
----
+## Experimental Setup
+- Training set: **75% (512 records)**
+- Test set: **25% (171 records)**
+- Split: stratified by class
+- Random seed: `42`
+- Scaling: StandardScaler for Logistic Regression, KNN, Linear SVM, and RBF SVM
 
-## Models Implemented
-
+## Models
 1. Logistic Regression
-2. K-Nearest Neighbors (k = 5)
-3. Linear Support Vector Machine
-4. Kernel Support Vector Machine (RBF)
-5. Gaussian Naïve Bayes
+2. K-Nearest Neighbors (`k = 5`)
+3. Linear SVM (`kernel = linear`)
+4. Kernel SVM (`kernel = rbf`)
+5. Gaussian Naive Bayes
 6. Decision Tree
-7. Random Forest (10 estimators)
+7. Random Forest (`n_estimators = 10`)
 8. XGBoost
 
----
+## Results
+| Model | Accuracy | Confusion Matrix |
+|---|---:|---|
+| Logistic Regression | 95.91% | `[[106, 5], [2, 58]]` |
+| KNN (k=5) | 95.32% | `[[106, 5], [3, 57]]` |
+| Linear SVM | 95.91% | `[[106, 5], [2, 58]]` |
+| Kernel SVM (RBF) | 96.49% | `[[106, 5], [1, 59]]` |
+| Naive Bayes | 95.91% | `[[106, 5], [2, 58]]` |
+| Decision Tree | 95.91% | `[[105, 6], [1, 59]]` |
+| Random Forest (10 estimators) | 95.91% | `[[106, 5], [2, 58]]` |
+| XGBoost | 97.08% | `[[106, 5], [0, 60]]` |
 
-## Software Requirements
+The confusion matrices use rows as actual classes and columns as predicted classes. The order is benign first and malignant second.
 
-Install the required packages:
+## Repository Files
+- Individual model scripts: one file per required classifier
+- `model_utils.py`: common data loading, cleaning, splitting, and reporting functions
+- `run_all_models.py`: runs all eight models and exports the combined results
+- `model_results.csv` and `model_results.json`: machine-readable results
+- `ANA680_Assignment1_Final_Report.docx`: formatted assignment report
+- `requirements.txt`: required Python packages
 
-```bash
-pip install pandas numpy scikit-learn xgboost
-```
-
-or
-
+## Installation
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## Files Included
-
-```
-Breast_Cancer_Data.csv
-logistic_regression.py
-knn.py
-linear_svm.py
-kernel_svm.py
-naive_bayes.py
-decision_tree.py
-random_forest.py
-xgboost_model.py
-requirements.txt
-README.md
-```
-
----
-
-## Running the Programs
-
-Run each classifier individually:
-
+## Running the Models
+Run any classifier individually, for example:
 ```bash
 python logistic_regression.py
-python knn.py
-python linear_svm.py
-python kernel_svm.py
-python naive_bayes.py
-python decision_tree.py
-python random_forest.py
-python xgboost_model.py
 ```
 
-Each program prints:
-- Classification Accuracy
-- Confusion Matrix
+Run every classifier and regenerate the result files:
+```bash
+python run_all_models.py
+```
 
----
+## Dataset Citation
+Wolberg, W. H., and Mangasarian, O. L. (1990). Multisurface method of pattern separation for medical diagnosis applied to breast cytology. *Proceedings of the National Academy of Sciences, 87*, 9193-9196.
 
-## Assignment Requirements
-
-- Python
-- Scikit-learn
-- Separate Python file for each classifier
-- 75/25 train-test split
-- Accuracy reported
-- Confusion matrix reported
-- Results summarized in a Word document
-
----
+UCI Machine Learning Repository. Wisconsin Breast Cancer (Original) dataset.
 
 ## Author
+Alberto Mendez  
+National University  
+ANA680
 
-Alberto Mendez
-
-National University
-
-ANA680 – Machine Learning
